@@ -1,2 +1,1 @@
-# EFundersCMS
-EFunders后台管理系统
+# layuicms2.0
