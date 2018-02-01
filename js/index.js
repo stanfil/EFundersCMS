@@ -5,6 +5,7 @@ layui.config({
 	"bodyTab" : "bodyTab"
 })
 layui.use(['bodyTab','form','element','layer','jquery'],function(){
+	// if(window.sessionStorage.getItem("EFToken")===undefined||window.sessionStorage.getItem("EFToken")==="") return false;
 	var form = layui.form,
 		element = layui.element;
 		$ = layui.$;
@@ -21,37 +22,13 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 				dataStr = data.contentManagement;
 				//重新渲染左侧菜单
 				tab.render();
-			}else if(json == "memberCenter"){
-				dataStr = data.memberCenter;
-				//重新渲染左侧菜单
-				tab.render();
-			}else if(json == "systemeSttings"){
-				dataStr = data.systemeSttings;
-				//重新渲染左侧菜单
-				tab.render();
-			}else if(json == "seraphApi"){
-                dataStr = data.seraphApi;
-                //重新渲染左侧菜单
-                tab.render();
-            }
+			}
 		})
 	}
-	//页面加载时判断左侧菜单是否显示
-	//通过顶部菜单获取左侧菜单
-	$(".topLevelMenus li,.mobileTopLevelMenus dd").click(function(){
-		if($(this).parents(".mobileTopLevelMenus").length != "0"){
-			$(".topLevelMenus li").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
-		}else{
-			$(".mobileTopLevelMenus dd").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
-		}
-		$(".layui-layout-admin").removeClass("showMenu");
-		$("body").addClass("site-mobile");
-		getData($(this).data("menu"));
-		//渲染顶部窗口
-		tab.tabMove();
-	});
 
-	//隐藏左侧导航
+    getData("contentManagement");
+
+    //隐藏左侧导航
 	$(".hideMenu").click(function(){
 		if($(".topLevelMenus li.layui-this a").data("url")){
 			layer.msg("此栏目状态下左侧菜单不可展开");  //主要为了避免左侧显示的内容与顶部菜单不匹配
@@ -62,8 +39,6 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 		tab.tabMove();
 	})
 
-	//通过顶部菜单获取左侧二三级菜单   注：此处只做演示之用，实际开发中通过接口传参的方式获取导航数据
-	getData("contentManagement");
 
 	//手机设备的简单适配
     $('.site-tree-mobile').on('click', function(){
@@ -139,29 +114,4 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 //打开新窗口
 function addTab(_this){
 	tab.tabAdd(_this);
-}
-
-//捐赠弹窗
-function donation(){
-	layer.tab({
-		area : ['260px', '367px'],
-		tab : [{
-			title : "微信",
-			content : "<div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img src='images/wechat.jpg'></div>"
-		},{
-			title : "支付宝",
-			content : "<div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img src='images/alipay.jpg'></div>"
-		}]
-	})
-}
-
-//图片管理弹窗
-function showImg(){
-    $.getJSON('json/images.json', function(json){
-        let res = json;
-        layer.photos({
-            photos: res,
-            anim: 5
-        });
-    });
 }

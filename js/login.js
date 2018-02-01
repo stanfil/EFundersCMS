@@ -3,20 +3,29 @@ layui.use(['form','layer','jquery'],function(){
         layer = parent.layer === undefined ? layui.layer : top.layer
         $ = layui.jquery;
 
-    $(".loginBody .seraph").click(function(){
-        layer.msg("这只是做个样式，至于功能，你见过哪个后台能这样登录的？还是老老实实的找管理员去注册吧",{
-            time:5000
-        });
-    })
-
     //登录按钮
-    form.on("submit(login)",function(data){
+    form.on("submit(login)",function(d){
         $(this).text("登录中...").attr("disabled","disabled").addClass("layui-disabled");
-        setTimeout(function(){
-            window.location.href = "/layuicms2.0";
-        },1000);
+        let username = d.form[0].value,
+            password = d.form[1].value;
+        $.ajax({
+            type: "POST",
+            url: "",
+            data:{
+                username,
+                password,
+            },
+            success:(res)=>{
+                const token = res.data.token;
+                const user = res.data.user;
+                sessionStorage.setItem('EFToken', token);
+                sessionStorage.setItem('user', user);
+                window.location.href = "/index.html";
+            },
+
+        });//类型， url，数据，正确账号密码，状态码
         return false;
-    })
+    });
 
     //表单输入效果
     $(".loginBody .input-item").click(function(e){

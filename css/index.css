@@ -150,3 +150,20 @@ iframe{ position:relative; height:100%; width:100%; border:none;}
 	.adminName,.top_menu dd[pc]{ display: none !important; }
 	*[mobile],.top_menu .layui-nav-item.showNotice[pc]{ display:inline-block !important; }
 }
+
+@font-face {
+	font-family: 'iconfont';  /* project id 553583 */
+	src: url('//at.alicdn.com/t/font_553583_il55i33qxquayvi.eot');
+	src: url('//at.alicdn.com/t/font_553583_il55i33qxquayvi.eot?#iefix') format('embedded-opentype'),
+	url('//at.alicdn.com/t/font_553583_il55i33qxquayvi.woff') format('woff'),
+	url('//at.alicdn.com/t/font_553583_il55i33qxquayvi.ttf') format('truetype'),
+	url('//at.alicdn.com/t/font_553583_il55i33qxquayvi.svg#iconfont') format('svg');
+}
+
+.iconfont {
+	font-family:"iconfont" !important;
+	font-size:20px;
+	font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
