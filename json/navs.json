@@ -1,7 +1,45 @@
 {
 	"contentManagement": [
 		{
-			"title": "文章列表",
+			"title": "人员管理",
+			"icon": "icon-text",
+			"href": "",
+			"spread": true,
+			"children": [
+				{
+					"title": "投资人",
+					"icon": "",
+					"href": "page/news/newsList.html",
+					"spread": false
+				},
+				{
+					"title": "创业者",
+					"icon": "",
+					"href": "page/news/newsList.html",
+					"spread": false
+				},
+				{
+					"title": "访客",
+					"icon": "",
+					"href": "page/news/newsList.html",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "项目管理",
+			"icon": "icon-text",
+			"href": "page/news/newsList.html",
+			"spread": false
+		},
+		{
+			"title": "协议模板",
+			"icon": "icon-text",
+			"href": "page/news/newsList.html",
+			"spread": false
+		},
+		{
+			"title": "邮件订阅",
 			"icon": "icon-text",
 			"href": "page/news/newsList.html",
 			"spread": false
